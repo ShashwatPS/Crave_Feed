@@ -1,0 +1,32 @@
+.main-content{
+    margin: 2vh 10vh;
+    border: 2px solid red;
+    height: 61vh;
+}
+
+.post-container {
+    display: flex;
+    height: 61vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 200vh;
+    /*margin: 0 20vh;*/
+    margin-left: 20vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.post-container::-webkit-scrollbar {
+    display: none;
+}
+  
+  .post-image {
+    border: 2px solid grey;
+    border-radius: 10px;
+    width: 30%;
+    height: 70%;
+    margin: 8px;
+    box-sizing: border-box;
+  }
+  

@@ -1,0 +1,151 @@
+.main-div {
+    background-color: white;
+    padding: 5vh 40vh;
+}
+
+.sub-div {
+    height: 90vh;
+    border-radius: 40px;
+    background-color: rgb(233, 233, 233);
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgb(214, 214, 214);
+}
+
+.sub-div > h2 {
+    padding-top: 2vh;
+    margin-left: 37vh;
+    font-size: 30px;
+    margin-bottom: 5vh;
+}
+
+.sub-div > h2 > span {
+    font-weight: bolder;
+    font-family: fantasy;
+    letter-spacing: 1px;
+}
+
+.inputs > h3 {
+    margin-left: 24vh;
+    margin-bottom: 1vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    color: #090909;
+}
+
+.inputs > input {
+    border: 2px solid #6b6b6b;
+    border-radius: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    font-size: 2.2vh;
+    width: 82vh;
+    margin-left: 23vh;
+    margin-bottom: 1vh;
+    margin-top: 2vh;
+}
+
+.inputs > h1 {
+    font-size: 20px;
+    margin-left: 23vh;
+    margin-bottom: 2vh;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #330202;
+}
+
+.tags-input-container {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    padding: 0.2em;
+    border-radius: 15px;
+    width: min(80vw, 600px);
+    margin-left: 23vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    font-size: 2.2vh;
+    cursor: pointer;
+}
+
+.tags-input-container > input {
+    font-size: 2.2vh;
+    border-radius: 15px;
+}
+
+.tag-item {
+    background-color: #dad8d8;
+    display: inline-block;
+    padding: 0.10em 0.20em;
+    border-radius: 20px;
+}
+
+.tag-item .close {
+    height: 20px;
+    width: 20px;
+    background-color: #303030;
+    display: inline-block;
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5em;
+}
+
+.tags-input {
+    flex-grow: 1;
+    padding: 0.5em 0;
+    border: none;
+    outline: none;
+}
+
+.sub-div > button {
+    border: 2px solid #000000;
+    padding: 0.5vh 4vh;
+    font-size: 2.5vh;
+    border-radius: 15vh;
+    margin-top: 3vh;
+    margin-left: 87vh;
+    background-color: #ffffffd0; /* Updated background color */
+    color: #000000;
+}
+
+.sub-div > button:hover {
+    background-color: #000000; /* Updated background color */
+    color: rgb(255, 255, 255)
+}
+
+.input-file::-webkit-file-upload-button{
+    visibility: hidden;
+}
+
+.input-file::before {
+    content: 'Upload Profile Pic';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 40px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 10px;
+    display: flex;
+    width: 30vh;
+    margin: auto;
+    
+  }
+  .input-file:hover::before {
+    background-color: #000000;
+    color: white;
+    font-weight: 300;
+  }
+  .input-file:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }

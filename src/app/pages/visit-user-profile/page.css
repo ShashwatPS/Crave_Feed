@@ -1,0 +1,467 @@
+input[type=text]:focus {
+    border: none;
+}
+
+.mainDiv {
+    display: flex;
+}
+
+.sec1 {
+    width: 50vh;
+    height: 100vh;
+    background-color: rgb(233, 233, 233);
+}
+
+.sec1 > div {
+    width: 40vh;
+    margin: auto;
+    margin-top: 2vh;
+}
+
+.username > h1 {
+    font-weight: bold;
+    width: 22vh;
+    margin: auto;
+    font-size: 20px;
+}
+
+.username > h2 {
+    width: 20vh;
+    margin: auto;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.597);
+}
+
+.sec1 > h1 {
+    font-family:fantasy;
+    word-spacing: 2vh;
+    font-size: 6vh;
+    margin-left: 9vh;
+    padding-top: 7vh;    
+    position: relative;
+}
+
+/* Followers and following */
+.follow
+{
+    display: flex;
+    padding-top: 3vh;
+    margin-right: 5vh;
+}
+.post {
+    border-right: 2px solid rgba(152, 150, 150, 0.597);
+}
+.post > h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-right: 5vh;
+    padding-left: 5px;
+}
+
+.post > h3 {
+    font-size: 15px;
+    padding-left: 3px;
+}
+
+.followers {
+    border-right: 2px solid rgba(152, 150, 150, 0.597);
+}
+
+.followers > h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-right: 5vh;
+    padding-left: 30px;
+}
+
+.followers > h3 {
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.following > h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-right: 10vh;
+    padding-left: 35px;
+}
+
+.following > h3 {
+    font-size: 15px;
+    padding-left: 25px;
+}
+
+/* Inner Pages */
+.InPages {
+    padding-top: 3vh;
+}
+.explore {
+    display: flex;
+    margin-left: 1vh;
+    padding: 4px;
+    cursor: pointer;
+}
+.explore:hover {
+    background-color: rgb(42, 42, 42);
+    color: rgb(213, 213, 213);
+}
+
+.explore > h1 {
+    margin-left: 1.5vh;
+}
+.forYou {
+    display : flex;
+    margin-top: 1.5vh;
+    margin-left: 1vh;
+    padding: 4px;
+    cursor: pointer;
+}
+.forYou:hover {
+    background-color: rgb(42, 42, 42);
+    color: rgb(213, 213, 213);
+}
+.forYou > h1 {
+    margin-left: 1.5vh;
+}
+
+.profile {
+    display: flex;
+    margin-top: 1.5vh;
+    margin-left: 1vh;
+    padding-bottom: 3.5vh;
+    padding: 4px;
+    cursor: pointer;
+}
+.profile:hover {
+    background-color: rgb(42, 42, 42);
+    color: rgb(213, 213, 213);
+}
+
+
+.profile > h1 {
+    margin-left: 1.5vh;
+}
+
+.logout  {
+    border-top: 2px solid gray;
+    display: flex;
+    cursor: pointer;
+}
+.logout > div {
+    padding: 0px;
+    width: 100%;
+    display: flex;
+}
+.logout > div:hover {
+    color: rgb(168, 0, 9);
+}
+.logout > div > h1 {
+    display : flex;
+    margin-top: 2.5vh;
+    margin-left: 1.5vh;
+}
+
+
+/* Section 2 */
+.sec2 {
+    width: 161vh;;
+    padding: 2vh 10vh 0vh 10vh;
+}
+.secondary-div1 {
+    width: 100%;
+    height: 30vh;
+    padding-left: 10vh;
+    display: flex;
+}
+.profileInfo {
+    padding-right: 20vh;
+    margin-left: 2vh;
+    width: 100%;
+}
+
+.profileInfo > h1 {
+    font-weight: bold;
+    margin-top: 2vh;
+    margin-left: 17vh;
+    font-size: 20px;
+    color: rgb(2, 2, 2);
+}
+
+.profileInfo > h2 {
+    margin-left: 18vh;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.597);
+}
+
+.profileInfo > p {
+    margin-left: 2vh;
+    margin-top: 2vh;
+    font-size: 14px;
+    color: rgb(147, 11, 11);
+}
+
+.profile-follow
+{
+    display: flex;
+    padding-top: 3vh;
+    margin-left: 10vh;
+}
+
+.Edit-Profile {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    width: 22vh;
+    height: 6vh;
+    position: relative;
+    top: -10vh;
+    left: 5vh;
+}
+
+.Edit-Profile:hover {
+    border: none;
+    background-color: black;
+    color: white;
+}
+
+.profile-post {
+    border-right: 2px solid rgba(152, 150, 150, 0.597);
+}
+.profile-post > h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-right: 5vh;
+    padding-left: 5px;
+}
+
+.profile-post > h3 {
+    font-size: 15px;
+    margin-left: -0.5vh;
+}
+
+.profile-followers {
+    border-right: 2px solid rgba(152, 150, 150, 0.597);
+}
+
+.profile-followers > h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-right: 8.5vh;
+    padding-left: 6vh;
+}
+
+.profile-followers > h3 {
+    font-size: 15px;
+    padding-left: 3vh;  
+}
+
+.profile-following > h1 {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-right: 0vh;
+    padding-left: 5vh;
+}
+
+.profile-following > h3 {
+    font-size: 15px;
+    padding-left: 2vh;
+}
+
+.secondary-div2 {
+    border-top: 2px solid rgba(116, 114, 114, 0.381);
+    width: 100%;
+    height: 67.9vh;
+}
+
+.nav-buttons {
+    margin-top: 2vh;
+    margin-left: 47vh;
+    margin-bottom: 2vh;
+    font-size: 14px;
+}
+
+.button{
+    padding-left: 5vh;
+    padding-right: 5vh;
+    height: 4vh;
+
+    /* margin-right: 5vh; */
+}
+
+.button:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    height: 4vh;
+    border-radius: 5px;    
+}
+
+
+/* MODAL */
+
+
+.main-div {
+    background-color: white;
+    padding: 5vh 40vh;
+}
+
+.sub-div {
+    height: 90vh;
+    border-radius: 40px;
+    background-color: rgb(247, 247, 247);
+    border: 3px solid black;
+    box-shadow: 10px 5px 5px rgba(214, 214, 214, 0.05);
+}
+
+.sub-div > h2 {
+    padding-top: 2vh;
+    margin-left: 56vh;
+    font-size: 30px;
+    margin-bottom: 5vh;
+    color: #101010;
+}
+
+.sub-div > h2 > span {
+    font-weight: bolder;
+    font-family: fantasy;
+    letter-spacing: 1px;
+}
+
+.inputs > h3 {
+    margin-left: 24vh;
+    margin-bottom: 1vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    color: #090909;
+}
+
+.inputs > input {
+    border: 2px solid #000000;
+    border-radius: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    font-size: 2.2vh;
+    width: 82vh;
+    margin-left: 23vh;
+    margin-bottom: 1vh;
+    margin-top: 2vh;
+    color: #000000;
+}
+
+.inputs > input::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+.inputs > h1 {
+    font-size: 20px;
+    margin-left: 23vh;
+    margin-bottom: 2vh;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #330202;
+}
+
+.tags-input-container {
+    background-color: #585858;
+    border: 2px solid #ffffff;
+    padding: 0.2em;
+    border-radius: 15px;
+    width: min(80vw, 600px);
+    margin-left: 23vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    font-size: 2.2vh;
+    cursor: pointer;
+}
+
+.tags-input-container > input {
+    font-size: 2.2vh;
+    border-radius: 15px;
+}
+
+.tags-input-container > input::placeholder {
+    color: #000000;
+}
+
+.tag-item {
+    background-color: #dad8d8;
+    display: inline-block;
+    padding: 0.10em 0.20em;
+    border-radius: 20px;
+}
+
+.tag-item .close {
+    height: 20px;
+    width: 20px;
+    background-color: #303030;
+    display: inline-block;
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5em;
+}
+
+.tags-input {
+    flex-grow: 1;
+    padding: 0.5em 0;
+    border: none;
+    outline: none;
+}
+
+.sub-div > button {
+    border: 2px solid #000000;
+    padding: 0.5vh 4vh;
+    font-size: 2.5vh;
+    font-weight: 600;
+    border-radius: 15vh;
+    margin-top: 3vh;
+    margin-left: 87vh;
+    background-color: #ffffff; /* Updated background color */
+    color: #000000;
+}
+
+.sub-div > button:hover {
+    background-color: #000000; /* Updated background color */
+    color: rgb(255, 255, 255);
+    border : 2px solid white;
+    font-weight: 400;
+}
+
+.input-file::-webkit-file-upload-button{
+    visibility: hidden;
+}
+
+.input-file::before {
+    content: 'Update Profile Pic';
+    display: inline-block;
+    /* background: linear-gradient(top, #f9f9f9, #e3e3e3); */
+    border: 2px solid #000000;
+    border-radius: 3px;
+    padding: 5px 40px;
+    outline: none;
+    /* white-space: nowrap; */
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 10px;
+    display: flex;
+    width: 30vh;
+    margin: auto;
+    color: rgb(0, 0, 0);    
+  }
+  .input-file:hover::before {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+  }
+  .input-file:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+
+.visitUsermainDiv {
+    margin-left: 24vh;
+}
