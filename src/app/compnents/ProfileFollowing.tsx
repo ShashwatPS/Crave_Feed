@@ -10,57 +10,27 @@ import { trpc } from "../_trpc/client";
 import { useAppDispatch , useAppSelector } from "../globalRedux/hooks";
 import { useEffect } from "react";
 import { userFollowingData } from "../globalRedux/features/users/postPageUser";
+
 export default function FollowingInMyProfile(){
 
     const dispatch = useAppDispatch();
     const mutation = trpc.followUnfollow.useMutation()
     const following = trpc.getFollowingById.useQuery({id : 1})
-    // console.log(following)
 
+    // Bug fix: added [following.data] dependency array to prevent infinite re-render loop.
+    // Without it, this effect ran on every render, dispatching and triggering another render endlessly.
     useEffect(() => {
-        if(following.data)
-        {
+        if(following.data) {
             dispatch(userFollowingData(following.data))
         }
-    })
+    }, [following.data])
 
     const fetchedProfile = useAppSelector((state) => state.followingData.following)
-    // const fetchedProfile = [
-    //     {
-    //         h1 : "Ivanka James",
-    //         h2 : "@ivankajames",
-    //         img : img1
-    //     },
-    //     {
-    //         h1 : "Big Bundah Girl",
-    //         h2 : "@bigBgirl",
-    //         img : img2 
-    //     },
-    //     {
-    //         h1 : "GlizzyGobbler",
-    //         h2 : "@GZperiod",
-    //         img : img5
-    //     },
-    //     {
-    //         h1 : "Tiny Weenie",
-    //         h2 : "@teeniweeni",
-    //         img : img2    
-    //     },
-    //     {
-    //         h1 : "Bob Loader",
-    //         h2 : "@BLnigger",
-    //         img : img4
-    //     },
-    //     {
-    //         h1 : "Dee Snuts",
-    //         h2 : "@DjNutter",
-    //         img : img3
-    //     }
-    // ]
+
     return(
         <div className="follower-main-div">
                 {fetchedProfile.map((value, index) => (
-                    <div>
+                    <div key={index}>
                     <Avatar alt="Profile Pic" src={img3.src} style={{position : "relative" , width : "10vh" , height : "10vh" , marginTop : "1vh" , marginLeft : "8vh" , border: "2px solid black"}}/>
                 <div className="follower-profile">
                     <h1>{value.FollowingUser.name}</h1>
