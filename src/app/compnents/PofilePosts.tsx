@@ -13,86 +13,62 @@ import imgP from "../_assets/post1.webp"
 import img6 from "../_assets/image4.jpg"
 import {useAppDispatch} from "@/app/globalRedux/hooks";
 import {useRouter} from "next/navigation";
+import {useQueryClient} from "@tanstack/react-query";
+import {getQueryKey} from "@trpc/react-query";
 
-// const imageArray = [
-//     img1.src,
-//     img2.src,
-//     img3.src,
-//     img4.src,
-//     img5.src,
-//     img6.src,
-//     img7.src,
-//     img8.src,
-//     // Add more image URLs as needed
-//   ];
-//
-//   const PostInMyProfile = () => {
-//     return (
-//       <div className="post-container">
-//         {imageArray.map((imageUrl, index) => (
-//           <img key={index} src={imageUrl} alt={`Post Image ${index + 1}`} className="post-image" />
-//         ))}
-//       </div>
-//     );
-//   };
 const PostInMyProfile = () => {
 
     const dispatch = useAppDispatch();
     const router = useRouter()
+    const queryClient = useQueryClient();
     const imgp7 = img6.src
     const imgpP = imgP.src
 
     const postData = trpc.getUserPosts.useQuery({userId : 1})
     const postDataArray = postData.data;
+
     // HANDLE VIEW COMMENTS BUTTON
     const [expandedArray, setExpandedArray] = React.useState(new Array(postDataArray?.length).fill(false));
 
     const handleExpansion = (index: number) => {
-        // Toggle the expansion state of the clicked Accordion and close others
         setExpandedArray((prevExpandedArray) =>
             prevExpandedArray.map((_, i) => (i === index ? !prevExpandedArray[i] : false))
         );
     };
 
     // HANDLE LIKES
-    const mutation = trpc.likePost.useMutation()
+    // Bug fix: replaced window.location.reload() with targeted tRPC query invalidation.
+    // Reloading the full page on every like click destroyed all local state, reset navigation,
+    // and caused a jarring full-page flash on a 10ms timer — a race condition waiting to happen.
+    const mutation = trpc.likePost.useMutation({
+        onSuccess: () => {
+            const queryKey = getQueryKey(trpc.getUserPosts, {userId: 1}, "query");
+            queryClient.invalidateQueries({queryKey});
+        }
+    });
+
     const handleLikePost = async (postId: number) => {
         try {
-            const result = await mutation.mutate({ userId: 1, postId });
-            setTimeout(() => {
-                window.location.reload();
-            },10)
-            console.log(result);
+            await mutation.mutateAsync({ userId: 1, postId });
         } catch (error) {
-            // Handle errors
             console.error(error);
         }
     };
 
-
-
     return (
         <div className="post-container">
             <div className="content">
-                {/* This is post content div */}
                 {postDataArray && postDataArray.map((value, index) => (
-                    // {imageArray.map((value, index) => (
                     <div className="content-post" key={index}>
                         <div className = "post-div1" style={{display : "flex"}}>
                             <Avatar alt="Remy Sharp" src={imgp7} style={{border : "2px solid black" , position : "relative" , width : "7vh" , height : "7vh" , marginTop : "1vh" , marginBottom : "1vh" , marginLeft : "2vh"}}/>
                             <div>
-                                {/* <h2>{value.Usera.name}</h2> */}
                                 <h2>{value.Usera.name}</h2>
                                 <h3 onClick={() => {router.push(`https://www.google.com/maps/search/?api=1&query=${value.Location}`)}}><LocationOnIcon style={{color : "gray" , height : "17px" , marginTop : "-0.4vh" , marginRight : "-0.4vh"}}/>{value.Location}</h3>
                             </div>
                         </div>
                         <img src={imgpP} alt="" />
                         <div className="reactions">
-                            {/* {like.find((prevLike) => prevLike.id === value.id)?.like === "LIKE" ? (
-                                        <FavoriteIcon style={{ color: "crimson" }} onClick={() => handleUnLike(value.id)} />
-                                        ) : (
-                                        <FavoriteBorderIcon onClick={() => handleLike(value.id)} />
-                                    )} */}
                             {value.Likes.length > 0 ? (value.Likes.map((like, index) => (
                                 <React.Fragment key={index}>
                                     {like.postId && like.postId === value.id ? (
@@ -113,20 +89,9 @@ const PostInMyProfile = () => {
                             </div>
                         </div>
                         <div className="content-comments">
-                            {/* <Accordion
-                                    expanded={expanded}
-                                    onChange={handleExpansion}
-                                    // slots={{ transition: Fade }}
-                                    // slotProps={{ transition: { timeout: 400 } }}
-                                    // sx={{
-                                    //     '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
-                                    //     '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
-                                    //     }}
-                                    style={{boxShadow : "none" ,borderRadius : "20px" , marginTop : "-0.5vh"}}
-                                > */}
                             <Accordion
-                                expanded={expandedArray[index]} // Use the individual expanded state
-                                onChange={() => handleExpansion(index)} // Pass the index to handleExpansion
+                                expanded={expandedArray[index]}
+                                onChange={() => handleExpansion(index)}
                                 style={{ boxShadow: "none", borderRadius: "20px", marginTop: "-0.5vh" }}
                             >
                                 <AccordionSummary
@@ -160,4 +125,4 @@ const PostInMyProfile = () => {
     );
 };
   
-  export default PostInMyProfile;
+export default PostInMyProfile;
