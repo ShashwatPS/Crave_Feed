@@ -23,64 +23,56 @@ export default function PostPageTSX() {
     const imgp4 = img4.src
     const [active , setActive] = useState("EXPLORE")
 
-    // Fetching data frombackend
+    // Fetching data from backend
     const dispatch = useAppDispatch()
-    
+
     const user = trpc.getUserById.useQuery({id : 1})
     const follower = trpc.getFollowersById.useQuery({id: 1});
     const following = trpc.getFollowingById.useQuery({id : 1});
     const post = trpc.getPostsById.useQuery({id: 1})
-    
-    
-    // Storing States 
 
+    // Storing States — dependency arrays added to prevent infinite re-render loops
     useEffect(() => {
-        if(user.data)
-        {
+        if(user.data) {
             dispatch(currentUser(user.data))
         }
-    })
+    }, [user.data])
 
     useEffect(() => {
-        if(follower.data)
-        {
+        if(follower.data) {
             dispatch(followersUser(follower.data?.length))
         }
-    })
+    }, [follower.data])
 
     useEffect(() => {
-        if(following.data)
-        {
+        if(following.data) {
             dispatch(followingUsers(following.data?.length))
         }
-    })
+    }, [following.data])
 
     useEffect(() => {
-        if(post.data)
-        {
+        if(post.data) {
             dispatch(userPosts(post.data?.length))
         }
-    })
+    }, [post.data])
 
-    // Fetching PRofile image
-
-    const imageUrl = trpc.getUserById.useQuery({id : 1})
-
+    // Fetching Profile image — reuse existing user query instead of a duplicate request
     let [signedUrl , setSignedUrl] = useState<string | undefined>(undefined)
 
-    var notOkayImage = imageUrl.data?.profilepicture
     useEffect(() => {
+        const notOkayImage = user.data?.profilepicture;
+        if (!notOkayImage) return;
+
         async function getImageUrl() {
             const response = await fetch(`https://image-upload-nq2i.onrender.com/url/${notOkayImage}`);
-            let signedUrl = await response.text();
+            const signedUrl = await response.text();
             setSignedUrl(signedUrl);
         }
 
         getImageUrl();
-    })  
+    }, [user.data?.profilepicture])
 
     // Fetching State Values
-
     const id = useAppSelector((state) => state.currentUser.user.id);
     const username = useAppSelector((state) => state.currentUser.user.username);
     const name = useAppSelector((state) => state.currentUser.user.name);
